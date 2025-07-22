@@ -1,36 +1,194 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ChatGPT Clone - Client Application
 
-## Getting Started
+This is the frontend client for the ChatGPT Clone, built with Next.js 15.4.2 and featuring modern chat interface components with advanced response controls.
 
-First, run the development server:
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18.0 or higher
+- npm, yarn, or pnpm
+
+### Installation
 
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📦 Dependencies
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Core Framework
 
-## Learn More
+- **Next.js 15.4.2** - React framework with App Router
+- **React 19.1.0** - UI library
+- **React DOM 19.1.0** - DOM bindings
 
-To learn more about Next.js, take a look at the following resources:
+### UI & Styling
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Tailwind CSS 4.0** - Utility-first CSS framework
+- **@tailwindcss/postcss** - PostCSS integration
+- **tailwind-merge** - Utility for merging Tailwind classes
+- **class-variance-authority** - Component variant management
+- **clsx** - Conditional class names
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### UI Components
 
-## Deploy on Vercel
+- **@radix-ui/react-dialog** - Modal dialogs
+- **@radix-ui/react-separator** - Visual separators
+- **@radix-ui/react-slot** - Composition utilities
+- **lucide-react** - Icon library
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Content & Markdown
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **react-markdown** - Markdown rendering
+- **react-syntax-highlighter** - Code syntax highlighting
+- **@types/react-syntax-highlighter** - TypeScript definitions
+
+### Development Tools
+
+- **ESLint** - Code linting
+- **eslint-config-next** - Next.js ESLint configuration
+
+## 🛠️ Available Scripts
+
+```bash
+# Development
+npm run dev          # Start development server with Turbopack
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+
+# Alternative package managers
+yarn dev / pnpm dev  # Development with yarn/pnpm
+```
+
+## 🏗️ Project Architecture
+
+### Component Structure
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── layout.js          # Root layout with providers
+│   ├── page.js            # Home page
+│   └── globals.css        # Global styles
+├── components/
+│   ├── chat/              # Chat-specific components
+│   │   ├── ChatInterface.js    # Main chat container
+│   │   ├── ChatMessages.js     # Message list
+│   │   ├── MessageBubble.js    # Individual message
+│   │   ├── ResponseControls.js # Response control buttons
+│   │   ├── ChatInput.js        # Message input field
+│   │   ├── ChatHeader.js       # Chat header
+│   │   └── WelcomeScreen.js    # Landing screen
+│   └── ui/                # Reusable UI components
+│       ├── Button.js           # Enhanced button
+│       ├── Badge.js            # Status badges
+│       ├── Avatar.js           # User avatars
+│       ├── IconButton.js       # Icon buttons
+│       ├── Input.js            # Input fields
+│       ├── Textarea.js         # Text areas
+│       ├── LoadingSpinner.js   # Loading indicators
+│       └── KeyboardShortcuts.js # Keyboard handling
+├── contexts/
+│   ├── ChatContext.js     # Chat state management
+│   └── ThemeContext.js    # Theme management
+├── lib/
+│   └── utils.js           # Utility functions
+└── styles/                # Additional styles
+```
+
+### Key Features Implemented
+
+- **Response Controls**: Regenerate and stop generation buttons
+- **Modern UI**: shadcn/ui inspired components
+- **Responsive Design**: Mobile-first approach
+- **State Management**: Context-based chat state
+- **Theme Support**: Dark/light mode switching
+- **Markdown Support**: Rich text rendering with syntax highlighting
+- **Accessibility**: ARIA labels and keyboard navigation
+
+## 🎨 Styling System
+
+### Tailwind Configuration
+
+- Custom color palette for chat interface
+- Dark mode support with `class` strategy
+- Custom animations and transitions
+- Responsive breakpoints
+- Component-specific utilities
+
+### Design Tokens
+
+```css
+/* Custom CSS variables in globals.css */
+--color-background
+--color-foreground
+--color-primary
+--color-sidebar-bg
+--color-user-message
+--color-assistant-message
+/* ... and more */
+```
+
+## 🔧 Configuration Files
+
+- **`next.config.mjs`** - Next.js configuration
+- **`tailwind.config.js`** - Tailwind CSS setup
+- **`postcss.config.mjs`** - PostCSS configuration
+- **`eslint.config.mjs`** - ESLint rules
+- **`jsconfig.json`** - JavaScript/TypeScript paths
+
+## 🚀 Deployment
+
+### Build for Production
+
+```bash
+npm run build
+npm run start
+```
+
+### Deploy on Vercel
+
+The easiest deployment option:
+
+1. Push to GitHub repository
+2. Connect to [Vercel](https://vercel.com)
+3. Deploy automatically on push
+
+### Other Deployment Options
+
+- **Netlify**: Static site deployment
+- **Railway**: Full-stack deployment
+- **Docker**: Containerized deployment
+
+## 🐛 Development Notes
+
+### Hot Reload
+
+The development server uses Turbopack for fast hot reloading. Changes to components will reflect immediately.
+
+### State Management
+
+- Chat state is managed via React Context
+- Local storage persistence for conversations
+- Optimistic UI updates for better UX
+
+### Performance
+
+- Code splitting with Next.js dynamic imports
+- Optimized images and fonts
+- Minimal bundle size with tree shaking
+
+## 📚 Learn More
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Documentation](https://react.dev)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Radix UI Documentation](https://www.radix-ui.com/docs)
